@@ -10,8 +10,8 @@ const Header = ({ turns, reset }: HeaderProps) => {
     <header className="App-header">
       <h1> Memory Blocks</h1>
       <button onClick={reset}> New Game </button>
-      <div>
-        <p>Turns: {turns}/ 15</p>
+      <div className="turns">
+        <p>Turns: {turns} / 15</p>
       </div>
     </header>
   );

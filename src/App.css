@@ -6,12 +6,21 @@
 }
 
 body {
-  background-color: #282c34;
+  font-family: sans-serif;
   margin: 0;
   font-size: 1.5em;
   text-align: center;
   background: var(--dark-color);
   color: #fff;
+}
+
+.header {
+  color: var(--brand-color);
+}
+
+.App {
+  max-width: 860px;
+  margin: 40px auto;
 }
 
 button {
@@ -30,26 +39,21 @@ button:hover {
   background-color: var(--brand-color);
 }
 
-.App {
-  max-width: 860px;
-  margin: 40px auto;
-}
-
 .turns {
   color: orange;
   font-weight: bolder;
   font-size: 2rem;
 }
 
-img {
-  width: 100%;
-  aspect-ratio: 1/1;
-}
-
 .card-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+}
+
+img {
+  width: 100%;
+  aspect-ratio: 1/1;
 }
 
 .card {
