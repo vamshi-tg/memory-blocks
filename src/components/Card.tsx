@@ -1,21 +1,28 @@
-import React, { useState } from "react";
 import Back from "../images/react-logo.png";
+import { TCard } from "./types";
 
-type TCardProps = {
-  id: number;
+type CardProps = {
+  card: TCard;
+  flipped: boolean;
+  handleChoice: (card: TCard) => void;
 };
 
-const Card = ({ id }: TCardProps) => {
-  const [flipped, setFlipped] = useState(false);
+const Card = ({ card, flipped, handleChoice }: CardProps) => {
+  const handleClick = () => {
+    handleChoice(card);
+  };
 
   return (
-    <div className="card" key={id}>
-      <img
-        src={Back}
-        alt="card back"
-        className="back"
-        onClick={() => setFlipped((p) => !p)}
-      />
+    <div className="card" key={card.id}>
+      <div className={flipped ? "flipped" : ""}>
+        <img src={card.src} alt="card front" className="front" />
+        <img
+          src={Back}
+          alt="card back"
+          className="back"
+          onClick={handleClick}
+        />
+      </div>
     </div>
   );
 };

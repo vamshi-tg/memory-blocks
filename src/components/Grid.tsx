@@ -1,13 +1,25 @@
 import React from "react";
 import Card from "./Card";
+import { TCard } from "./types";
 
-function Grid() {
+type GridProps = {
+  cards: TCard[];
+  handleChoice: (card: TCard) => void;
+  choiceOne: TCard | null;
+  choiceTwo: TCard | null;
+};
+
+function Grid({ cards, handleChoice, choiceOne, choiceTwo }: GridProps) {
   return (
     <section className="card-grid">
-      {new Array(12).fill("a").map((card, index) => {
+      {cards.map((card) => {
         return (
-          <div className="card">
-            <Card id={index} />
+          <div className="card" key={card.id}>
+            <Card
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === choiceOne || card === choiceTwo || card.matched}
+            />
           </div>
         );
       })}
