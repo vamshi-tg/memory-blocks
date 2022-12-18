@@ -1,14 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./components/Header";
 
 function App() {
+  const [turns, setTurns] = useState(0);
+
+  const shuffleCards = () => {
+    // should shuffle cards
+  };
+
+  useEffect(() => {
+    // Should shuffle cards on render
+    shuffleCards();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1> Memory Blocks </h1>
-        <button onClick={() => alert("Creating New game")}>New Game</button>
-      </header>
+      <Header turns={turns} reset={shuffleCards}></Header>
     </div>
   );
 }
