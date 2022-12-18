@@ -11,6 +11,8 @@ function App() {
   const [choiceOne, setChoiceOne] = useState<TCard | null>(null);
   const [choiceTwo, setChoiceTwo] = useState<TCard | null>(null);
   const [disabled, setDisabled] = useState(false);
+  const [winner, setWinner] = useState(false);
+  const [exceeds, setExceeds] = useState(false);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -18,6 +20,12 @@ function App() {
       .map((card) => ({ ...card, id: Math.random() }));
 
     setCards(shuffledCards);
+    setTurns(0);
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setWinner(false);
+    setExceeds(false);
+    setDisabled(false);
   };
 
   useEffect(() => {
@@ -45,6 +53,23 @@ function App() {
     }
   }, [choiceOne, choiceTwo]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      const isTrue = cards.every((card) => card.matched === true);
+
+      if (turns >= 15) {
+        if (isTrue && turns === 15) {
+          setWinner(true);
+        } else {
+          setExceeds(true); // Disbaled user from clicking on cards
+          setDisabled(true);
+        }
+      } else if (isTrue && cards.length > 0) {
+        setWinner(true);
+      }
+    }, 500);
+  }, [turns, cards, winner]);
+
   const backToDefault = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
@@ -59,6 +84,8 @@ function App() {
   return (
     <div className="App">
       <Header turns={turns} reset={shuffleCards}></Header>
+      {winner && <div className="result">Congratulations, You Win!!</div>}
+      {exceeds && <div className="result">Uh Oh,You are out of Turns!!</div>}
       <Grid
         cards={cards}
         handleChoice={handleChoice}

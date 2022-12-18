@@ -30,6 +30,17 @@ button:hover {
   background-color: var(--brand-color);
 }
 
+.App {
+  max-width: 860px;
+  margin: 40px auto;
+}
+
+.turns {
+  color: orange;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
 img {
   width: 100%;
   aspect-ratio: 1/1;
@@ -75,6 +86,10 @@ img {
 .flipped .back {
   transform: rotateY(90deg);
   transition-delay: 0s;
+}
+
+.result {
+  margin-bottom: 30px;
 }
 
 @media only screen and (min-width: 500px) and (max-width: 1000px) {
