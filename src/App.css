@@ -29,3 +29,25 @@ button:hover {
   color: #0f172a;
   background-color: var(--brand-color);
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1000px) {
+  .card-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 16vw);
+    grid-gap: 20px;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 2500px) {
+  .card-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 10vw);
+    grid-gap: 20px;
+  }
+}
