@@ -7,9 +7,10 @@ type GridProps = {
   handleChoice: (card: TCard) => void;
   choiceOne: TCard | null;
   choiceTwo: TCard | null;
+  disabled: boolean;
 };
 
-function Grid({ cards, handleChoice, choiceOne, choiceTwo }: GridProps) {
+function Grid({ cards, handleChoice, choiceOne, choiceTwo, disabled }: GridProps) {
   return (
     <section className="card-grid">
       {cards.map((card) => {
@@ -19,6 +20,7 @@ function Grid({ cards, handleChoice, choiceOne, choiceTwo }: GridProps) {
               card={card}
               handleChoice={handleChoice}
               flipped={card === choiceOne || card === choiceTwo || card.matched}
+              disabled={disabled}
             />
           </div>
         );

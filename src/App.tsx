@@ -10,6 +10,7 @@ function App() {
   const [cards, setCards] = useState<TCard[]>([]);
   const [choiceOne, setChoiceOne] = useState<TCard | null>(null);
   const [choiceTwo, setChoiceTwo] = useState<TCard | null>(null);
+  const [disabled, setDisabled] = useState(false);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -25,6 +26,8 @@ function App() {
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
+      setDisabled(true);
+
       if (choiceOne.src === choiceTwo.src) {
         setCards((prevCards) => {
           return prevCards.map((card) => {
@@ -45,7 +48,8 @@ function App() {
   const backToDefault = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
-    setTurns(prevTurns => prevTurns + 1);
+    setDisabled(false);
+    setTurns((prevTurns) => prevTurns + 1);
   };
 
   const handleChoice = (card: TCard) => {
@@ -60,6 +64,7 @@ function App() {
         handleChoice={handleChoice}
         choiceOne={choiceOne}
         choiceTwo={choiceTwo}
+        disabled={disabled}
       ></Grid>
     </div>
   );

@@ -5,10 +5,13 @@ type CardProps = {
   card: TCard;
   flipped: boolean;
   handleChoice: (card: TCard) => void;
+  disabled: boolean;
 };
 
-const Card = ({ card, flipped, handleChoice }: CardProps) => {
+const Card = ({ card, flipped, handleChoice, disabled }: CardProps) => {
   const handleClick = () => {
+    if (disabled) return;
+    
     handleChoice(card);
   };
 
