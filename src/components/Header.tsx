@@ -7,7 +7,7 @@ type HeaderProps = {
 
 const Header = ({ turns, reset }: HeaderProps) => {
   return (
-    <header>
+    <header className="App-header">
       <h1> Memory Blocks</h1>
       <button> New Game </button>
     </header>
