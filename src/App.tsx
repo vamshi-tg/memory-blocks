@@ -45,7 +45,7 @@ function App() {
   const backToDefault = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
-    setTurns((prevTurns) => prevTurns + 1);
+    setTurns(prevTurns => prevTurns + 1);
   };
 
   const handleChoice = (card: TCard) => {
