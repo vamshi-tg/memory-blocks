@@ -4,6 +4,7 @@ Memory Blocks is a classic memory game that tests your concentration and memory 
 
 The game starts with a 4x3 grid of blocks. You can click on any two blocks to flip them over. If the two blocks match, they will stay flipped over. If they don't match, they will flip back over. Your goal is to match all of the blocks in the least amount of moves.
 
+![memory-blocks-demos](./public/memory-blocks-demo.gif)
 ---
 ## Available Scripts
 
